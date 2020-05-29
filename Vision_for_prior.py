@@ -1,7 +1,6 @@
 import numpy as np
 from utils.config import Config
 from math import sqrt as sqrt
-from itertools import product as product
 import matplotlib.pyplot as plt
 
 mean = []

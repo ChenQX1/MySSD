@@ -1,12 +1,9 @@
-import cv2
-import keras
 import numpy as np
 import colorsys
 import os
 import torch
 from nets import ssd
 import torch.backends.cudnn as cudnn
-from utils.config import Config
 from utils.box_utils import letterbox_image,ssd_correct_boxes
 from PIL import Image,ImageFont, ImageDraw
 from torch.autograd import Variable
