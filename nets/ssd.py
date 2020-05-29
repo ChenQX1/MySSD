@@ -19,7 +19,7 @@ class SSD(nn.Module):
         self.extras = nn.ModuleList(extras)
         self.priorbox = PriorBox(self.cfg)
         with torch.no_grad():
-            self.priors = Variable(self.priorbox.forward())
+            self.priors = torch.tensor(self.priorbox.forward())
         self.loc = nn.ModuleList(head[0])
         self.conf = nn.ModuleList(head[1])
         if phase == 'test':
@@ -75,7 +75,7 @@ class SSD(nn.Module):
         return output
 
 
-def add_extras(i, batch_norm=False):
+def add_extras(i):
     # Extra layers added to VGG for feature scaling
     layers = []
     in_channels = i
@@ -127,3 +127,4 @@ def get_ssd(phase,num_classes):
 
     SSD_MODEL = SSD(phase, vgg, extra_layers, (loc_layers, conf_layers), num_classes)
     return SSD_MODEL
+
